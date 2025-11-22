@@ -88,7 +88,7 @@ const createTransaction = async (req, res) => {
     }
 
     let { type, quantity, reason, productId } = req.body;
-    quantity = Number(quantity); // parse quantity as number
+    quantity = Number(quantity); 
 
     const product = await db.Product.findByPk(productId);
     if (!product) {
@@ -133,7 +133,7 @@ const updateTransaction = async (req, res) => {
     }
 
     let { type, quantity, reason, productId } = req.body;
-    quantity = Number(quantity); // parse quantity as number
+    quantity = Number(quantity); 
 
     if (productId && productId !== transaction.productId) {
       const product = await db.Product.findByPk(productId);

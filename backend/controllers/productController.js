@@ -169,22 +169,13 @@ const getLowStockAlerts = async (req, res) => {
 
 const getTotalQuantity = async (req, res) => {
   try {
-    // Query to get total quantity by category from products table directly, summing quantities by category
+   
     const totalResult = await db.sequelize.query(
       "SELECT category, COALESCE(SUM(quantity), 0) as totalQuantity " +
         "FROM products GROUP BY category",
       { type: db.sequelize.QueryTypes.SELECT }
     );
-    /*
-      totalResult example:
-      [
-        { category: "Electronics", totalQuantity: 50 },
-        { category: "Clothing", totalQuantity: 30 },
-        ...
-      ]
-    */
-    // Convert totalQuantity from string to number if necessary
-    // Log totalResult to debug keys
+
     console.log("Total Quantity Query Result:", totalResult);
     if (totalResult.length > 0) {
       console.log("Keys in first row:", Object.keys(totalResult[0]));

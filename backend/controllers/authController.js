@@ -30,7 +30,7 @@ const register = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    // Check if role is provided and if the current user is admin
+    
     let userRole = role || "staff";
     if (role && req.user && req.user.role !== "admin") {
       return res.status(403).json({ message: "Only admins can assign roles" });

@@ -5,7 +5,7 @@ const ProductList = ({ category }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pagination, setPagination] = useState({});
-  // const [categories, setCategories] = useState([]);
+  
   const [filters, setFilters] = useState({
     page: 1,
     limit: 10,
@@ -16,7 +16,7 @@ const ProductList = ({ category }) => {
   const isMountedRef = useRef(true);
 
   const fetchProducts = useCallback(async () => {
-    // Abort any previous request
+    
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
@@ -35,14 +35,7 @@ const ProductList = ({ category }) => {
       if (isMountedRef.current) {
         setProducts(response.data.products);
         setPagination(response.data.pagination);
-        // const uniqueCategories = [
-        //   ...new Set(
-        //     response.data.products
-        //       .map((product) => product.category)
-        //       .filter(Boolean)
-        //   ),
-        // ];
-        // setCategories(uniqueCategories);
+    
       }
     } catch (error) {
       if (error.name !== "AbortError") {

@@ -54,7 +54,7 @@ const TransactionList = () => {
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters((prev) => ({ ...prev, [name]: value }));
-    setPage(1); // Reset to first page when filters change
+    setPage(1); 
   };
 
   const formatDate = (dateString) => {
